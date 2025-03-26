@@ -14,10 +14,9 @@ public class Main{
         set.RemoveElement(4);
         System.out.print("Удаление 22 и 4 из множества: ");
         System.out.println(set);
-        System.out.println("Удаление 22 и 4 из множества: ");
-        System.out.printf("Максимальный элемент множества: %d", set.FindMax());
-        System.out.printf("Минимальный элемент множества: %d", set.FindMin());
-        System.out.printf("Номер ячейки в памяти с массивом чисел множества: %d", set.GetAddress());
+        System.out.printf("Максимальный элемент множества: %d%n", set.FindMax());
+        System.out.printf("Минимальный элемент множества: %d%n", set.FindMin());
+        System.out.printf("Номер ячейки в памяти с массивом чисел множества: %d%n", set.GetAddress());
         System.out.println("Сложение множеств A и B: ");
         int[] dataA = {1, 5, 7, 9};
         int[] dataB = {3, 8, 5, 2};
