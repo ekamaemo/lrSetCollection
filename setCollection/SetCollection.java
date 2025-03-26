@@ -63,6 +63,71 @@ public class SetCollection {
         this.size = uniqueCount;
     }
 
+    // Добавление элемента
+    public void AddElement(int value) {
+        if (!Contains(value)) {
+            int[] newData = new int[size + 1];
+            
+            // Копируем все существующие элементы
+            System.arraycopy(data, 0, newData, 0, size);
+            // Находим позицию для вставки
+            int insertPos = 0;
+            while (insertPos < size && data[insertPos] < value) {
+                insertPos++;
+            }
+            
+            // Копируем элементы до позиции вставки
+            System.arraycopy(data, 0, newData, 0, insertPos);
+            
+            // Вставляем новый элемент
+            newData[insertPos] = value;
+            
+            // Копируем оставшиеся элементы
+            System.arraycopy(data, insertPos, newData, insertPos + 1, size - insertPos);
+            
+            this.data = newData;
+            this.size++;
+        }
+    }
+
+    // Удаление элемента множества
+    public void RemoveElement(int value){
+        if (Contains(value)){
+            // Находим позицию элемента в множестве
+            int indPos = binarySearch(value);
+            int[] newData = new int[size - 1];
+            for (int i = 0, j = 0; i < size; i++) {
+                if (i != indPos) {
+                    newData[j++] = data[i];
+                }
+            }
+            this.data = newData;
+            this.size--;
+        }
+    }
+
+    public boolean Contains(int value){
+        return binarySearch(value) != -1;
+    }
+
+    // Бинарный поиск
+    private int binarySearch(int value) {
+        int left = 0;
+        int right = size - 1;
+        
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (data[mid] == value) {
+                return mid;
+            } else if (data[mid] < value) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return -1;
+    }
+
     // Вывод множества
     @Override
     public String toString() {

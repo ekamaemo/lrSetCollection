@@ -4,8 +4,11 @@ public class Main{
     public static void main(String[] args){
         int[] data = {1, 2, 2, 2, 5, 4};
         SetCollection set = new SetCollection(data, 6);
+        set.AddElement(3);
+        set.AddElement(2);
         System.out.println(set);
-        setCollection set1 = new SetCollection();
-        System.out.println(set1);
+        set.RemoveElement(22);
+        set.RemoveElement(4);
+        System.out.println(set);
     }
 }
