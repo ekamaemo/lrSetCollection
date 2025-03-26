@@ -1,4 +1,3 @@
-
 package setCollection;
 
 
@@ -108,6 +107,52 @@ public class SetCollection {
 
     public boolean Contains(int value){
         return binarySearch(value) != -1;
+    }
+
+    // Поиск максимального элемента
+    public int FindMax() {
+        if (size == 0) System.out.println("Set is empty");
+        return data[size - 1];
+    }
+
+    // Поиск минимального элемента
+    public int FindMin() {
+        if (size == 0) System.out.println("Set is empty");
+        return data[0];
+    }
+
+    // Вывод элементов множества
+    public void Iterate() {
+        for (int i = 0; i < size; i++) {
+            System.out.print(data[i] + " ");
+        }
+        System.out.println();
+    }
+
+    // Слияние двух множеств
+    public SetCollection operatorPlus(SetCollection other){
+        SetCollection newSet = new SetCollection();
+        for (int i = 0; i < this.size; i++){
+            newSet.AddElement(this.data[i]);
+        }
+        for (int i = 0; i < other.size; i++){
+            newSet.AddElement(other.data[i]);
+        }
+        return newSet;
+    }
+    
+    // Сравнение двух множеств
+    public boolean isEqual(SetCollection other){
+        if (this.size != other.size) return false;
+        for (int i = 0; i < size; i++){
+            if (data[i] != other.data[i]) return false;
+        }
+        return true;
+    } 
+
+    // Возвращает адрес массива данных 
+    public int GetAddress(){
+        return System.identityHashCode(data);
     }
 
     // Бинарный поиск
