@@ -127,7 +127,11 @@ public class SetCollection {
     // Вывод элементов множества
     public void Iterate() {
         for (int i = 0; i < size; i++) {
+            if (i == size - 1){
+                System.out.print(data[i]);
+            } else {
             System.out.print(data[i] + " ");
+            }
         }
         System.out.println();
     }
